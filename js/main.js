@@ -6,7 +6,7 @@ import { DataFetcher } from "./data/dataFetcher.js";
 const dataFetcher = new DataFetcher(RECIPES);
 const recipesList = dataFetcher.getRecipesList();
 
-recipesList.byName();
+recipesList.sortByName();
 
 for (let recipe of recipesList.recipes) {
   console.log(recipe.name);
