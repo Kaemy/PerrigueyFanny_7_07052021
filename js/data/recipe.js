@@ -52,7 +52,6 @@ export class RecipesList {
         );
       }
     }
-
     return [...ingredients];
   }
 

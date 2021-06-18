@@ -12408,9 +12408,28 @@ footer, header, main {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  color: white;
 }
 .badge i {
   margin-left: 0.5rem;
+}
+.badge--info {
+  background: #3282f7;
+}
+.badge--info:hover {
+  background: #0966ed;
+}
+.badge--success {
+  background: #68d9a4;
+}
+.badge--success:hover {
+  background: #37cd87;
+}
+.badge--danger {
+  background: #ed6454;
+}
+.badge--danger:hover {
+  background: #e9432f;
 }
 
 .card {
@@ -12461,7 +12480,6 @@ footer, header, main {
   padding: 1.2rem 1rem;
   border: none;
   background: #e7e7e7;
-  cursor: pointer;
 }
 .search-bar i {
   font-size: 2rem;
@@ -12481,12 +12499,32 @@ footer, header, main {
   margin: 0 1rem 0.5rem 0;
   padding: 1rem;
   border-radius: 0.25rem;
+  color: white;
+  font-size: 1.21rem;
   cursor: pointer;
 }
 @media (min-width: 840px) {
   .filters-wrapper .select-filter {
     padding: 1.5rem 1rem;
   }
+}
+.filters-wrapper .select-filter--info {
+  background: #3282f7;
+}
+.filters-wrapper .select-filter--info:hover {
+  background: #0966ed;
+}
+.filters-wrapper .select-filter--success {
+  background: #68d9a4;
+}
+.filters-wrapper .select-filter--success:hover {
+  background: #37cd87;
+}
+.filters-wrapper .select-filter--danger {
+  background: #ed6454;
+}
+.filters-wrapper .select-filter--danger:hover {
+  background: #e9432f;
 }
 
 /*# sourceMappingURL=style.css.map */
