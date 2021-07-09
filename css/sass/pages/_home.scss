@@ -1,4 +1,4 @@
-.search-bar {
+.p-search-bar {
   display: flex;
   border-radius: $grid-sm;
   overflow: hidden;
@@ -26,21 +26,23 @@
   }
 }
 
-.badges-wrapper {
+.p-badges-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.filters-wrapper {
+.p-filters-wrapper {
   display: flex;
+  flex-wrap: wrap;
 
-  .select-filter {
+  .p-select-filter {
     display: flex;
     justify-content: space-between;
-
     width: 11rem;
     margin: 0 $grid-2 $grid-1 0;
     padding: $grid-2;
     border-radius: $grid-sm;
+    border:none;
     color: white;
     font-size: $h5-size;
     cursor: pointer;

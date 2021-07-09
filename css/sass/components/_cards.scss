@@ -1,36 +1,39 @@
-.card {
+.c-card {
     border-radius: $grid-sm;
     overflow: hidden;
   
     margin: 0 0 $grid-6 0;
   }
   
-  .card__img {
+  .c-card__img {
     height: 10rem;
-  
     background: $neutral-400;
   }
   
-  .card__body {
+  .c-card__body {
     height: 14rem;
     padding: $grid-2 $grid-3;
-  
     background: $neutral-200;
   
-    .card__title {
+    .c-card__title {
       display: flex;
       justify-content: space-between;
-  
       margin: 0 0 $grid-2 0;
-  
       font-size: $h5-size;
+    }
+
+    .c-card__ingredients, .c-card__description {
+    max-height: 10rem;
+    overflow: hidden;
     }
   
     p {
-      margin: $grid-xs 0;
-  
+      display: -webkit-box;
+      margin: 0;
       font-size: $sm-size;
       overflow: hidden;
       text-overflow: ellipsis;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
     }
   } 
