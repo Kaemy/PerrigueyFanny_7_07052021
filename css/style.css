@@ -12537,15 +12537,20 @@ ul {
   font-size: 1.21rem;
 }
 .p-filters-wrapper .p-select-filter ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   position: absolute;
   top: 4rem;
   left: 0;
   z-index: 2000;
-  width: 36rem;
+  width: 60rem;
+  padding: 0.5rem 0;
   border-radius: 0.25rem;
 }
 .p-filters-wrapper .p-select-filter ul li {
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
+  width: 12rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
