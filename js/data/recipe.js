@@ -1,6 +1,7 @@
 "use strict";
 
 import { sortAlphabetically } from "../utiles/sort.js";
+import { removeAccents, removeStopWords } from "../utiles/words.js";
 
 export class Recipe {
   constructor(
@@ -21,6 +22,24 @@ export class Recipe {
     this.description = description;
     this.appliance = appliance;
     this.ustensils = ustensils;
+  }
+
+  get descriptionWithoutAccent() {
+    return removeAccents(this.description);
+  }
+
+  get ingredientsNamesWithoutAccent() {
+    const ingredientsNames = [];
+
+    for (let item of this.ingredients) {
+      let ingredientNameWithoutAccent = removeAccents(item.ingredient);
+      ingredientsNames.push(ingredientNameWithoutAccent.toLowerCase);
+    }
+    return ingredientsNames;
+  }
+
+  get nameWithoutAccent() {
+    return removeAccents(this.name);
   }
 }
 
@@ -84,14 +103,50 @@ export class RecipesList {
 
     return sortAlphabetically(ustensils);
   }
-  
+
+  filterIngredients(userInput) {
+    const filteredIngredients = [];
+
+    userInput = userInput.toLowerCase();
+
+    for(let ingredient of this.sortedIngredients) {
+      ingredient = ingredient.toLowerCase();
+
+      if (ingredient.search(userInput) > -1) {
+        filteredIngredients.push(ingredient);
+      }
+    }
+    return filteredIngredients;
+  }
+
+  searchByUserInput(userInput) {
+    const filteredRecipes = new Set();
+    const words = userInput.split(" ");
+
+    const keywords = removeStopWords(words);
+
+    for (let word of keywords) {
+      for (let recipe of this.recipes) {
+        if (
+          recipe.nameWithoutAccent.includes(word) ||
+          recipe.ingredientsNamesWithoutAccent.includes(word) ||
+          recipe.descriptionWithoutAccent.includes(word)
+        ) {
+          filteredRecipes.add(recipe);
+        }
+      }
+    }
+
+    return new RecipesList([...filteredRecipes]);
+  }
+
   sortByName() {
     return this.recipes.sort((r1, r2) => {
       const name1 = r1.name.toLowerCase();
       const name2 = r2.name.toLowerCase();
 
       if (name1 > name2) return 1;
-      if (name1 < name2) return -1;
+      if (name1 > name2) return -1;
       return 0;
     });
   }

@@ -12485,6 +12485,7 @@ ul {
   padding: 1.5rem 2rem;
   border: none;
   background: #e7e7e7;
+  outline: none;
 }
 .p-search-bar input::placeholder {
   color: #a79c9c;
@@ -12493,6 +12494,7 @@ ul {
   padding: 1.2rem 1rem;
   border: none;
   background: #e7e7e7;
+  outline: none;
 }
 .p-search-bar i {
   font-size: 2rem;
@@ -12544,7 +12546,6 @@ ul {
   top: 4rem;
   left: 0;
   z-index: 2000;
-  width: 60rem;
   padding: 0.5rem 0;
   border-radius: 0.25rem;
 }

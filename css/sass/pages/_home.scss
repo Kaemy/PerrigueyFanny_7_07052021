@@ -9,6 +9,7 @@
     padding: $grid-3 $grid-4;
     border: none;
     background: $neutral-200;
+    outline: none;
 
     &::placeholder {
       color: $neutral-600;
@@ -19,6 +20,7 @@
     padding: 1.2 * $grid-2 $grid-2;
     border: none;
     background: $neutral-200;
+    outline: none;
   }
 
   i {
@@ -73,7 +75,6 @@
       top: 4rem;
       left: 0;
       z-index: $z-dropdown;
-      width: 60rem;
       padding: $grid-1 0;
       border-radius: $grid-sm;;
 
