@@ -12413,29 +12413,31 @@ ul {
   margin: 0.25rem 1rem 0.25rem 0;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  cursor: pointer;
+  cursor: default;
   color: white;
 }
 .c-badge i {
   margin-left: 0.5rem;
+  cursor: pointer;
+  transition: color 200ms;
 }
 .c-badge--ingredient {
   background: #3282f7;
 }
-.c-badge--ingredient:hover {
-  background: #0966ed;
+.c-badge--ingredient i:hover {
+  color: #0751bc;
 }
 .c-badge--appliance {
   background: #68d9a4;
 }
-.c-badge--appliance:hover {
-  background: #37cd87;
+.c-badge--appliance i:hover {
+  color: #2caf72;
 }
 .c-badge--ustensil {
   background: #ed6454;
 }
-.c-badge--ustensil:hover {
-  background: #e9432f;
+.c-badge--ustensil i:hover {
+  color: #c62715;
 }
 
 .c-card {
