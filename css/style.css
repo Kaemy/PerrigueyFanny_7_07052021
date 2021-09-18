@@ -12410,7 +12410,7 @@ ul {
 
 .c-badge {
   width: max-content;
-  margin: 1rem 1rem 1rem 0;
+  margin: 0.25rem 1rem 0.25rem 0;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -12419,22 +12419,22 @@ ul {
 .c-badge i {
   margin-left: 0.5rem;
 }
-.c-badge--info {
+.c-badge--ingredient {
   background: #3282f7;
 }
-.c-badge--info:hover {
+.c-badge--ingredient:hover {
   background: #0966ed;
 }
-.c-badge--success {
+.c-badge--appliance {
   background: #68d9a4;
 }
-.c-badge--success:hover {
+.c-badge--appliance:hover {
   background: #37cd87;
 }
-.c-badge--danger {
+.c-badge--ustensil {
   background: #ed6454;
 }
-.c-badge--danger:hover {
+.c-badge--ustensil:hover {
   background: #e9432f;
 }
 
@@ -12500,90 +12500,160 @@ ul {
   font-size: 2rem;
 }
 
-.p-badges-wrapper {
+.p-badges-wrapper,
+.p-filter-badges-wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.p-badges-wrapper {
+  margin: 0.75rem 0;
 }
 
 .p-filters-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
-.p-filters-wrapper .p-select-filter {
+.p-filters-wrapper .p-filter {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 11rem;
   margin: 0 1rem 0.5rem 0;
   border-radius: 0.25rem;
   color: white;
   font-size: 1.21rem;
   cursor: pointer;
 }
-.p-filters-wrapper .p-select-filter__label {
+.p-filters-wrapper .p-filter label {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  width: 11rem;
+  cursor: pointer;
+  transition: width 150ms;
 }
 @media (min-width: 840px) {
-  .p-filters-wrapper .p-select-filter__label {
+  .p-filters-wrapper .p-filter label {
     padding: 1.5rem 1rem;
   }
 }
-.p-filters-wrapper .p-select-filter input {
+.p-filters-wrapper .p-filter input {
   display: none;
-  padding: 1rem 0;
+  width: 0;
   border: none;
+  border-radius: 0.25rem;
+  outline: none;
   color: white;
   font-size: 1.21rem;
+  transition: width 150ms;
 }
-.p-filters-wrapper .p-select-filter ul {
+.p-filters-wrapper .p-filter i {
+  display: inline-block;
+  margin: 0.25rem 0 0 1rem;
+}
+.p-filters-wrapper .p-filter.clicked {
+  width: 17rem;
+  padding: 0.5rem;
+}
+.p-filters-wrapper .p-filter.clicked span {
+  display: none;
+}
+.p-filters-wrapper .p-filter.clicked input {
+  display: inline-block;
+  width: 13.5rem;
+  padding: 0.5rem;
+}
+.p-filters-wrapper .p-filter.clicked i {
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+}
+@media (min-width: 840px) {
+  .p-filters-wrapper .p-filter.clicked {
+    width: 20rem;
+    padding: 1rem 0.5rem;
+  }
+  .p-filters-wrapper .p-filter.clicked input {
+    width: 16.5rem;
+    padding: 0.5rem;
+  }
+}
+.p-filters-wrapper .p-filter ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 4rem;
+  top: 3.25rem;
   left: 0;
   z-index: 2000;
-  padding: 0.5rem 0;
+  height: auto;
   border-radius: 0.25rem;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 150ms;
 }
-.p-filters-wrapper .p-select-filter ul li {
+.p-filters-wrapper .p-filter ul.closed {
+  height: 0;
+  opacity: 0;
+}
+.p-filters-wrapper .p-filter ul li {
   padding: 1rem 1rem;
   width: 12rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.p-filters-wrapper .p-select-filter--info {
+.p-filters-wrapper .p-filter--ingredient {
   background: #3282f7;
 }
-.p-filters-wrapper .p-select-filter--info .p-select-filter__label:hover {
+.p-filters-wrapper .p-filter--ingredient label:not(.clicked):hover {
   background: #0966ed;
 }
-.p-filters-wrapper .p-select-filter--info input {
+.p-filters-wrapper .p-filter--ingredient input {
   background: #3282f7;
 }
-.p-filters-wrapper .p-select-filter--info input::placeholder {
-  color: #c5dcfd;
+.p-filters-wrapper .p-filter--ingredient input::placeholder {
+  color: #adcdfc;
 }
-.p-filters-wrapper .p-select-filter--info ul {
+.p-filters-wrapper .p-filter--ingredient ul {
   background: #3282f7;
 }
-.p-filters-wrapper .p-select-filter--info ul li:hover {
+.p-filters-wrapper .p-filter--ingredient ul li:hover {
   background: #0966ed;
 }
-.p-filters-wrapper .p-select-filter--success {
+.p-filters-wrapper .p-filter--appliance {
   background: #68d9a4;
 }
-.p-filters-wrapper .p-select-filter--success:hover {
+.p-filters-wrapper .p-filter--appliance label:not(.clicked):hover {
   background: #37cd87;
 }
-.p-filters-wrapper .p-select-filter--danger {
+.p-filters-wrapper .p-filter--appliance input {
+  background: #68d9a4;
+}
+.p-filters-wrapper .p-filter--appliance input::placeholder {
+  color: #cef3e1;
+}
+.p-filters-wrapper .p-filter--appliance ul {
+  background: #68d9a4;
+}
+.p-filters-wrapper .p-filter--appliance ul li:hover {
+  background: #37cd87;
+}
+.p-filters-wrapper .p-filter--ustensil {
   background: #ed6454;
 }
-.p-filters-wrapper .p-select-filter--danger:hover {
+.p-filters-wrapper .p-filter--ustensil label:not(.clicked):hover {
+  background: #e9432f;
+}
+.p-filters-wrapper .p-filter--ustensil input {
+  background: #ed6454;
+}
+.p-filters-wrapper .p-filter--ustensil input::placeholder {
+  color: #f7b8b0;
+}
+.p-filters-wrapper .p-filter--ustensil ul {
+  background: #ed6454;
+}
+.p-filters-wrapper .p-filter--ustensil ul li:hover {
   background: #e9432f;
 }
 

@@ -33,7 +33,7 @@ export class Recipe {
 
     for (let item of this.ingredients) {
       let ingredientNameWithoutAccent = removeAccents(item.ingredient);
-      ingredientsNames.push(ingredientNameWithoutAccent.toLowerCase);
+      ingredientsNames.push(ingredientNameWithoutAccent);
     }
     return ingredientsNames;
   }
@@ -46,6 +46,7 @@ export class Recipe {
 export class RecipesList {
   constructor(recipes) {
     this.recipes = recipes;
+    this.sortByName();
   }
 
   _collectAppliances() {
@@ -119,22 +120,30 @@ export class RecipesList {
     return filteredIngredients;
   }
 
-  searchByUserInput(userInput) {
-    const filteredRecipes = new Set();
+  searchWithSearchBar(userInput) {
+    let filteredRecipes = new Set(this.recipes);
     const words = userInput.split(" ");
-
     const keywords = removeStopWords(words);
 
     for (let word of keywords) {
+      const wordRecipes = new Set();
+
+      word = removeAccents(word);
+
       for (let recipe of this.recipes) {
         if (
           recipe.nameWithoutAccent.includes(word) ||
           recipe.ingredientsNamesWithoutAccent.includes(word) ||
           recipe.descriptionWithoutAccent.includes(word)
         ) {
-          filteredRecipes.add(recipe);
+          wordRecipes.add(recipe);
         }
       }
+
+      // Intersect new wordRecipes with actuel filteredRecipes
+      filteredRecipes = new Set(
+        [...wordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+      );
     }
 
     return new RecipesList([...filteredRecipes]);

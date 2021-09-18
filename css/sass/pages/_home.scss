@@ -1,3 +1,5 @@
+$filters-transition-duration: 150ms;
+
 .p-search-bar {
   display: flex;
   border-radius: $grid-sm;
@@ -28,31 +30,38 @@
   }
 }
 
-.p-badges-wrapper {
+.p-badges-wrapper,
+.p-filter-badges-wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.p-badges-wrapper {
+  margin: 1.5 * $grid-1 0;
 }
 
 .p-filters-wrapper {
   display: flex;
   flex-wrap: wrap;
 
-  .p-select-filter {
+  .p-filter {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    width: 11rem;
     margin: 0 $grid-2 $grid-1 0;
     border-radius: $grid-sm;
     color: white;
     font-size: $h5-size;
     cursor: pointer;
 
-    &__label {
+    label {
       display: flex;
       justify-content: space-between;
       padding: $grid-2;
+      width: 11 * $grid-2;
+      cursor: pointer;
+      transition: width $filters-transition-duration;
     
       @media (min-width: $small-breakpoint) {
         padding: $grid-3 $grid-2;
@@ -61,10 +70,47 @@
 
     input {
       display: none;
-      padding: $grid-2 0;
+      width: 0;
       border: none;
+      border-radius: $grid-sm;
+      outline: none;
       color: white;
       font-size: $h5-size;
+      transition: width $filters-transition-duration;
+    }
+
+    i {
+      display: inline-block;
+      margin: $grid-sm 0 0 $grid-2;
+    }
+
+    &.clicked {
+      width: 17 * $grid-2;
+      padding: $grid-1;
+
+      span {
+        display: none;
+      }
+
+      input {
+        display: inline-block;
+        width: 13.5 * $grid-2;
+        padding: $grid-1;
+      }
+
+      i {
+        margin: $grid-1 $grid-1 $grid-1 $grid-2;
+      }
+
+      @media (min-width: $small-breakpoint) {
+        width: 20 * $grid-2;
+        padding: $grid-2 $grid-1;
+
+        input {
+          width: 16.5 * $grid-2;
+          padding: $grid-1;
+        }
+      }
     }
 
     ul {
@@ -72,11 +118,19 @@
       flex-direction: column;
       flex-wrap: wrap;
       position: absolute;
-      top: 4rem;
+      top: 3.25rem;
       left: 0;
       z-index: $z-dropdown;
-      padding: $grid-1 0;
-      border-radius: $grid-sm;;
+      height: auto;
+      border-radius: $grid-sm;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity $filters-transition-duration;
+
+      &.closed {
+        height: 0;
+        opacity: 0;
+      }
 
       li {
         padding: $grid-2 $grid-2;
@@ -87,10 +141,10 @@
       }
     }
 
-    &--info {
+    &--ingredient {
       background: $info-500;
 
-      .p-select-filter__label:hover {
+      label:not(.clicked):hover {
         background: darken($info-500, 10)
       }
 
@@ -98,7 +152,7 @@
         background: $info-500;
 
         &::placeholder {
-          color: lighten($info-500, 30);
+          color: lighten($info-500, 25);
         }
       }
 
@@ -111,19 +165,51 @@
       }
     }
 
-    &--success {
+    &--appliance {
       background: $success-500;
 
-      &:hover {
+      label:not(.clicked):hover {
         background: darken($success-500, 12);
+      }
+
+      input {
+        background: $success-500;
+
+        &::placeholder {
+          color: lighten($success-500, 25);
+        }
+      }
+
+      ul {
+        background: $success-500;
+
+        li:hover {
+          background: darken($success-500, 12);
+        }
       }
     }
 
-    &--danger {
+    &--ustensil {
       background: $danger-500;
 
-      &:hover {
+      label:not(.clicked):hover {
         background: darken($danger-500, 8);
+      }
+
+      input {
+        background: $danger-500;
+
+        &::placeholder {
+          color: lighten($danger-500, 20);
+        }
+      }
+
+      ul {
+        background: $danger-500;
+
+        li:hover {
+          background: darken($danger-500, 8);
+        }
       }
     }
   }

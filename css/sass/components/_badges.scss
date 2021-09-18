@@ -1,6 +1,6 @@
 .c-badge {
     width: max-content;
-    margin: $grid-2 $grid-2 $grid-2 0;
+    margin: $grid-sm $grid-2 $grid-sm 0;
     padding: $grid-1 $grid-2;
     border-radius: $grid-sm;
     cursor: pointer;
@@ -10,7 +10,7 @@
         margin-left: $grid-1;
     }
 
-    &--info {
+    &--ingredient {
         background: $info-500;
   
         &:hover {
@@ -18,7 +18,7 @@
         }
       }
   
-      &--success {
+      &--appliance {
         background: $success-500;
   
         &:hover {
@@ -26,7 +26,7 @@
         }
       }
   
-      &--danger {
+      &--ustensil {
         background: $danger-500;
   
         &:hover {

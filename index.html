@@ -32,44 +32,50 @@
                 </form>
                 <!-- Exemple de filtres selectionnés -->
                 <div class="p-badges-wrapper">
-                    <div class="c-badge c-badge--info">
-                      <span>Coco</span>
-                      <i class="far fa-times-circle"></i>
+                    <div class="p-filter-badges-wrapper" id="ingredient-badges-wrapper">
                     </div>
   
-                    <div class="c-badge c-badge--success">
-                      <span>Blender</span>
-                      <i class="far fa-times-circle"></i>
+                    <div class="p-filter-badges-wrapper" id="appliance-badges-wrapper">
                     </div>
 
-                    <div class="c-badge c-badge--danger">
-                      <span>Cuillère à soupe</span>
-                      <i class="far fa-times-circle"></i>
+                    <div class="p-filter-badges-wrapper" id="ustensil-badges-wrapper">
                     </div>
                   </div>
                   <!-- Les filtres -->
                   <div class="p-filters-wrapper">
-                    <div class="p-select-filter p-select-filter--info">
-                      <div class="p-select-filter__label">
+                    <div class="p-filter p-filter--ingredient">
+                      <label id="ingredient-filter-label" for="ingredient">
                         <span>Ingrédients</span>
-                        <i class="fas fa-chevron-down"></i>
-                      </div>
-                      <input type="text" placeholder="Rechercher un ingérdient" />
-                      <ul id="ingredients-list"></ul>
+                        <input type="text" id="ingredient" placeholder="Rechercher un ingrédient"/>
+                        <i class="fas fa-chevron-down" id="ingredient-filter-icon"></i>
+                      </label>
+                      <ul class="closed" id="ingredient-list"></ul>
                     </div>
   
-                    <div class="p-select-filter p-select-filter--success">
-                      <div class="p-select-filter__label">
+                    <div class="p-filter p-filter--appliance">
+                      <label id="appliance-filter-label" for="appliance">
                         <span>Appareil</span>
-                        <i class="fas fa-chevron-down"></i>
-                      </div>
+                        <input
+                          type="text"
+                          id="appliance"
+                          placeholder="Rechercher un appareil"
+                        />
+                        <i class="fas fa-chevron-down" id="appliance-filter-icon"></i>
+                      </label>
+                      <ul class="closed" id="appliance-list"></ul>
                     </div>
   
-                    <div class="p-select-filter p-select-filter--danger">
-                      <div class="p-select-filter__label">
+                    <div class="p-filter p-filter--ustensil">
+                      <label id="ustensil-filter-label" for="ustensil">
                         <span>Ustensiles</span>
-                        <i class="fas fa-chevron-down"></i>
-                      </div>
+                        <input
+                          type="text"
+                          id="ustensil"
+                          placeholder="Rechercher un ustensile"
+                        />
+                        <i class="fas fa-chevron-down" id="ustensil-filter-icon"></i>
+                      </label>
+                      <ul class="closed" id="ustensil-list"></ul>
                     </div>
                   </div>
 
